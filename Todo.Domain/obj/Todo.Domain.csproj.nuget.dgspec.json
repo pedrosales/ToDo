@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pedro\\Documents\\Aula7196\\ToDo\\Todo.Domain\\Todo.Domain.csproj": {}
+    "C:\\Users\\pedro\\Documents\\Aula7196\\ToDo\\ToDo.Domain\\Todo.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pedro\\Documents\\Aula7196\\ToDo\\Todo.Domain\\Todo.Domain.csproj": {
+    "C:\\Users\\pedro\\Documents\\Aula7196\\ToDo\\ToDo.Domain\\Todo.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\Documents\\Aula7196\\ToDo\\Todo.Domain\\Todo.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\Documents\\Aula7196\\ToDo\\ToDo.Domain\\Todo.Domain.csproj",
         "projectName": "Todo.Domain",
-        "projectPath": "C:\\Users\\pedro\\Documents\\Aula7196\\ToDo\\Todo.Domain\\Todo.Domain.csproj",
+        "projectPath": "C:\\Users\\pedro\\Documents\\Aula7196\\ToDo\\ToDo.Domain\\Todo.Domain.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\Documents\\Aula7196\\ToDo\\Todo.Domain\\obj\\",
+        "outputPath": "C:\\Users\\pedro\\Documents\\Aula7196\\ToDo\\ToDo.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
