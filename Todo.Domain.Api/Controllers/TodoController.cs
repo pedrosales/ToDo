@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Todo.Domain.Commands;
 using Todo.Domain.Entities;
@@ -11,6 +12,7 @@ namespace Todo.Api.Controllers
 {
     [ApiController]
     [Route("v1/todos")]
+    [Authorize]
     public class TodoController : ControllerBase
     {
 
@@ -20,7 +22,8 @@ namespace Todo.Api.Controllers
             [FromServices]ITodoRepository repository
         )
         {
-            return repository.GetAll("Pedro Ivo");
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return repository.GetAll(user);
         }
 
         [HttpPost]
@@ -30,7 +33,7 @@ namespace Todo.Api.Controllers
             [FromServices]TodoHandler handler
         )
         {
-            command.User = "Pedro Ivo";
+            command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return (GenericCommandResult)handler.Handle(command);
         }
 
@@ -40,8 +43,8 @@ namespace Todo.Api.Controllers
             [FromServices]ITodoRepository repository
         )
         {
-            //var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
-            return repository.GetAllDone("Pedro Ivo");
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return repository.GetAllDone(user);
         }
 
         [Route("undone")]
@@ -50,7 +53,8 @@ namespace Todo.Api.Controllers
             [FromServices]ITodoRepository repository
         )
         {
-            return repository.GetAllUndone("Pedro Ivo");
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return repository.GetAllUndone(user);
         }
 
         [Route("done/today")]
@@ -59,7 +63,8 @@ namespace Todo.Api.Controllers
             [FromServices]ITodoRepository repository
         )
         {
-            return repository.GetByPeriod("Pedro Ivo",DateTime.Now.Date, true);
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return repository.GetByPeriod(user,DateTime.Now.Date, true);
         }
 
         [Route("undone/today")]
@@ -68,7 +73,8 @@ namespace Todo.Api.Controllers
             [FromServices]ITodoRepository repository
         )
         {
-            return repository.GetByPeriod("Pedro Ivo",DateTime.Now.Date, false);
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return repository.GetByPeriod(user,DateTime.Now.Date, false);
         }
 
         [Route("done/tomorrow")]
@@ -77,7 +83,8 @@ namespace Todo.Api.Controllers
             [FromServices]ITodoRepository repository
         )
         {
-            return repository.GetByPeriod("Pedro Ivo",DateTime.Now.Date.AddDays(1), true);
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return repository.GetByPeriod(user,DateTime.Now.Date.AddDays(1), true);
         }
 
         [Route("undone/tomorrow")]
@@ -86,7 +93,8 @@ namespace Todo.Api.Controllers
             [FromServices]ITodoRepository repository
         )
         {
-            return repository.GetByPeriod("Pedro Ivo",DateTime.Now.Date.AddDays(1), false);
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return repository.GetByPeriod(user,DateTime.Now.Date.AddDays(1), false);
         }
 
         [HttpPut]
@@ -96,7 +104,7 @@ namespace Todo.Api.Controllers
             [FromServices]TodoHandler handler
         )
         {
-            command.User = "Pedro Ivo";
+            command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return (GenericCommandResult)handler.Handle(command);
         }
 
@@ -107,7 +115,7 @@ namespace Todo.Api.Controllers
             [FromServices]TodoHandler handler
         )
         {
-            command.User = "Pedro Ivo";
+            command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return (GenericCommandResult)handler.Handle(command);
         }
 
@@ -118,7 +126,7 @@ namespace Todo.Api.Controllers
             [FromServices]TodoHandler handler
         )
         {
-            command.User = "Pedro Ivo";
+            command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return (GenericCommandResult)handler.Handle(command);
         }
     }
